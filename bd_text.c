@@ -1168,6 +1168,29 @@ int bd_text_event(bd_view_t *view, io_event_t event) {
     } else if (event.key == IO_CTRL('Y')) {
       __bd_text_redo(text);
       return 1;
+    } else if (event.key == IO_CTRL('U')) {
+      if (bd_text_save(view, 1)) {
+        char path[256];
+        strcpy(path, text->path);
+        
+        bd_cursor_t cursor = text->cursor;
+        bd_cursor_t hold_cursor = text->hold_cursor;
+        bd_cursor_t scroll = text->scroll;
+        
+        int scroll_mouse_y = text->scroll_mouse_y;
+        
+        free(view->data);
+        bd_text_load(view, path);
+        
+        text = view->data;
+        
+        text->cursor = cursor;
+        text->hold_cursor = hold_cursor;
+        text->scroll = scroll;
+        
+        text->scroll_mouse_y = scroll_mouse_y;
+        return 1;
+      }
     } else if (event.key == IO_ALT(IO_CTRL('M'))) {
       const unsigned char *line = text->lines[text->cursor.y].data;
       int start = __bd_text_utf_8_to_byte(text, text->cursor.x, text->cursor.y);
