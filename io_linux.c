@@ -534,19 +534,13 @@ mouse_parse_end:
         
         int move_type = (mouse_mask / 32) % 4;
         
-        if (move_type == 1) {
-          is_down = (is_down && isupper(chr));
+        if (move_type == 1 || (move_type == 2 && !mouse_down)) {
+          mouse_down = !mouse_down;
           
-          if (mouse_down && is_down) {
-            move_type = 2;
-          } else {
-            mouse_down = is_down;
-            
-            return (io_event_t) {
-              .type = (is_down ? IO_EVENT_MOUSE_DOWN : IO_EVENT_MOUSE_UP),
-              .mouse = {.x = mouse_x, .y = mouse_y},
-            };
-          }
+          return (io_event_t) {
+            .type = (mouse_down ? IO_EVENT_MOUSE_DOWN : IO_EVENT_MOUSE_UP),
+            .mouse = {.x = mouse_x, .y = mouse_y},
+          };
         }
         
         if (move_type == 2) {
