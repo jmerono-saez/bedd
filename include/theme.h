@@ -10,6 +10,7 @@ enum {
   theme_crt_green,
   theme_crt_amber,
   theme_solarized_dark,
+  theme_jmer,
   
   theme_count,
 };

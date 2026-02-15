@@ -154,6 +154,25 @@ static const char *__format_theme_solarized_dark[] = {
   "\x1B[38;5;234m\x1B[48;5;230m",
 };
 
+static const char *__format_theme_jmer[] = {
+  "\x1B[38;5;231m\x1B[48;5;234m",
+  "\x1B[38;5;231m\x1B[48;5;237m",
+  "\x1B[38;5;234m\x1B[48;5;243m",
+  
+  "\x1B[38;5;231m",
+  "\x1B[38;5;237m",
+  "\x1B[38;5;210m",
+  "\x1B[38;5;156m",
+  "\x1B[38;5;228m",
+  "\x1B[38;5;153m",
+  "\x1B[38;5;216m",
+  "\x1B[38;5;159m",
+  "\x1B[38;5;249m",
+  "\x1B[38;5;243m",
+  
+  "\x1B[38;5;234m\x1B[48;5;231m",
+};
+
 const char *theme_names[] = {
   "16 colors + background (terminal)",
   "16 colors (terminal)",
@@ -163,6 +182,7 @@ const char *theme_names[] = {
   "Monochromatic green (256-color)",
   "Monochromatic amber (256-color)",
   "Solarized dark (256-color)",
+  "Julio's theme (256-color)",
 };
 
 static const char **__format_themes[] = {
@@ -174,6 +194,7 @@ static const char **__format_themes[] = {
   __format_theme_crt_green,
   __format_theme_crt_amber,
   __format_theme_solarized_dark,
+  __format_theme_jmer,
 };
 
 void theme_apply(char *buffer) {
