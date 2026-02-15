@@ -46,7 +46,7 @@ syntax_t st_init(const char *filename) {
         !strcasecmp(filename, ".hpp") || !strcasecmp(filename, ".cpp") ||
         !strcasecmp(filename, ".ij")) {
       return (syntax_t) {
-        .lang = "C/C++",
+        .lang = "C/C++/iJava",
         .f_depth = st_c_depth,
         .f_pair = st_c_pair,
         .f_color = st_c_color,
@@ -62,9 +62,9 @@ syntax_t st_init(const char *filename) {
       };
     }
     
-    if (!strcasecmp(filename, ".js")) {
+    if (!strcasecmp(filename, ".js") || !strcasecmp(filename, ".ts")) {
       return (syntax_t) {
-        .lang = "JavaScript",
+        .lang = "JavaScript/TypeScript",
         .f_depth = st_c_depth,
         .f_pair = st_c_pair,
         .f_color = st_js_color,
@@ -100,7 +100,7 @@ syntax_t st_init(const char *filename) {
     
     if (!strcasecmp(filename, ".sh")) {
       return (syntax_t) {
-        .lang = "sh/bash script",
+        .lang = "POSIX shell script",
         .f_depth = st_depth,
         .f_pair = st_c_pair,
         .f_color = st_sh_color,

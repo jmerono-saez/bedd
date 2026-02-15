@@ -3,21 +3,21 @@
 #include <io.h>
 
 bd_config_t bd_config = (bd_config_t) {
-  .indent_width = 2,
+  .indent_width = 4,
   .indent_spaces = 1,
   .indent_guides = 1,
   .scroll_step = 2,
   .scroll_image_step = 4,
   .scroll_width_margin = 0,
-  .undo_edit_count = 48,
-  .undo_depth = 64,
+  .undo_edit_count = 1,
+  .undo_depth = 1536,
   .theme = theme_17,
   .xterm_colors = 1,
   .terminal_count = 2048,
-  .column_guide = 0,
-  .column_tiny = 0,
+  .column_guide = 72,
+  .column_tiny = 1,
   
-  .shell_path = "/usr/bin/sh",
+  .shell_path = "/bin/sh",
   
   .syntax_colors = {
     "",             // st_color_none

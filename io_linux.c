@@ -79,7 +79,7 @@ io_file_t io_fopen(const char *path, int write_mode) {
   return (io_file_t) {
     .type = io_file_file,
     .read_only = 0,
-    .data = fopen(buffer, write_mode ? "wb+" : "rb"),
+    .data = fopen(buffer, write_mode ? "w+" : "r"),
   };
 }
 
@@ -141,7 +141,28 @@ void io_dsolve(const char *path, char *buffer) {
     
     io_dsolve(path + 1, buffer + strlen(home));
   } else {
+    strcpy(buffer, path);
+    
+    /*
     realpath(path, buffer);
+    
+    const char *name = strrchr(path, '/');
+    
+    if (name == NULL) {
+        char temp[8192];
+        
+        strcpy(temp, "/");
+        strcat(temp, path);
+        
+        name = temp;
+    }
+    
+    const int offset = strlen(buffer) - strlen(name);
+    
+    if (offset < 0 || strcmp(buffer + offset, name)) {
+        strcat(buffer, name);
+    }
+    */
   }
 }
 
@@ -181,13 +202,13 @@ io_file_t io_copen(int write_mode) {
     return (io_file_t) {
       .type = io_file_clipboard,
       .read_only = 0,
-      .data = popen("xclip -selection clipboard -i", "w"),
+      .data = popen("wl-copy", "w"),
     };
   } else {
     return (io_file_t) {
       .type = io_file_clipboard,
       .read_only = 1,
-      .data = popen("xclip -selection clipboard -o", "r"),
+      .data = popen("wl-paste --no-newline", "r"),
     };
   }
 }

@@ -152,7 +152,7 @@ int st_js_color(int prev_state, int *state, const char *text, int length) {
         is_keyword = 1;
       }
       
-      if (ident_length == 4 && strstr("case,else,enum,null,this,true,void,with", buffer)) {
+      if (ident_length == 4 && strstr("case,else,enum,null,this,true,type,void,with", buffer)) {
         is_keyword = 1;
       }
       
