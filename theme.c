@@ -157,7 +157,7 @@ static const char *__format_theme_solarized_dark[] = {
 static const char *__format_theme_jmer[] = {
   "\x1B[38;5;231m\x1B[48;5;234m",
   "\x1B[38;5;231m\x1B[48;5;237m",
-  "\x1B[38;5;234m\x1B[48;5;243m",
+  "\x1B[38;5;231m\x1B[48;5;243m",
   
   "\x1B[38;5;231m",
   "\x1B[38;5;237m",
